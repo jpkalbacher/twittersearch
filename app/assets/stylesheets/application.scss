@@ -13,3 +13,19 @@
  *= require_tree .
  *= require_self
  */
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+.main-page {
+	padding-top: 100px;
+}
+
+.form-control.search-bar {
+	width: 25%;
+}
+
+.clearfix:after {
+  clear: both;
+  display: block;
+  content: "";
+}
