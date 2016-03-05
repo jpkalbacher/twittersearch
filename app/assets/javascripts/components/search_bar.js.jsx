@@ -1,6 +1,6 @@
 var SearchBar = React.createClass({
   getInitialState: function(){
-    return {search_fragment: ""};
+    return {searchParams: ""};
   },
 
   updateSearchParams: function(e){
@@ -11,6 +11,7 @@ var SearchBar = React.createClass({
     e.preventDefault();
     var searchParams = this.state.searchParams;
     Util.searchForHandle(this.state.searchParams)
+    this.setState({searchParams: ""});
   },
 
   render: function(){

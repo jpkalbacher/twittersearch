@@ -1,12 +1,30 @@
 var Results = React.createClass({
+  getInitialState: function(){
+    return {
+      foundHandles: SearchResultsStore.all()
+    };
+  },
+
+  componentDidMount: function(){
+    SearchResultsStore.addSearchChangeListener(this._onChange);
+  },
+
+  componentWillUnmount: function(){
+    SearchResultsStore.removeSearchChangeListener(this._onChange);
+  },
+
+  _onChange: function(){
+    this.setState({foundHandles: SearchResultsStore.all()});
+  },
+
   render: function() {
     var rows = [];
-    // this.state.activities.forEach(function(activity){
-    //   rows.push(<ActivityRow activity={activity} key={activity.id} />);
-    // });
+    this.state.foundHandles.forEach(function(result){
+      rows.push(<SearchResultsRow handle={result} key={result.id} />);
+    });
     return (
       <div>
-        <h1 className="activity-table">Results</h1>
+        <h1 className="results-table">Results</h1>
         <table className="table table-striped">
             <tbody>{rows}</tbody>
         </table>
