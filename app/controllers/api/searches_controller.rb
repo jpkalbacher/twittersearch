@@ -20,4 +20,10 @@ class Api::SearchesController < ApplicationController
 		# 	)
 		# Twitter::SearchResults.new(request)
 	end
+
+	def tweets(screen_name)
+		tweets = $twitter.user_timeline(screen_name)
+
+		tweets.to_json
+	end
 end

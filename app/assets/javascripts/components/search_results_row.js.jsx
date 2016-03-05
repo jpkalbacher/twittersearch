@@ -1,6 +1,7 @@
 var SearchResultsRow = React.createClass({
 	showProfile: function() {
 		Util.fetchProfile(this.props.handle.screen_name);
+    Util.fetchTweets(this.props.handle.screen_name);
 	},
 
 	componentDidMount: function(){

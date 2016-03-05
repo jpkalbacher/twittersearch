@@ -14,6 +14,13 @@ class HandlesController < ApplicationController
 		render json: user
 	end
 
+	def tweets
+		searches = Api::SearchesController.new
+
+		tweets = searches.tweets(handle_params[:screen_name])
+		render json: tweets
+	end
+
 	private
 	def handle_params
 		params.require(:handle).permit(:screen_name)

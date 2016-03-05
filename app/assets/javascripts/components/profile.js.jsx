@@ -15,7 +15,6 @@ var Profile = React.createClass({
 
   _onChange: function(){
     this.setState({profile: ProfileStore.profile()})
-    console.log('changed');
   },
 
   render: function(){
