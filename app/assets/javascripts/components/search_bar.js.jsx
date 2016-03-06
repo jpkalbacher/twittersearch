@@ -20,11 +20,11 @@ var SearchBar = React.createClass({
         <h1>Search</h1>
         <form className="search-form clear-fix" onSubmit={this.handleSubmit}>
             <input type="text"
-                   className="form-control search-bar clear-fix"
+                   className="search-bar clear-fix"
                    value={this.state.searchParams}
                    placeholder="Search for users..."
                    onChange={this.updateSearchParams}/>
-            <button className="btn clear-fix" type="submit">Search</button>
+            <button className="search-btn btn clear-fix" type="submit"><span className="glyphicon glyphicon-search" aria-hidden="true"></span></button>
         </form>
       </div>
     )

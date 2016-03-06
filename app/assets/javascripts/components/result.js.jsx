@@ -1,7 +1,8 @@
-var SearchResultsRow = React.createClass({
+var Result = React.createClass({
 	showProfile: function() {
 		Util.fetchProfile(this.props.handle.screen_name);
     Util.fetchTweets(this.props.handle.screen_name);
+    SearchResultsStore.empty();
 	},
 
 	componentDidMount: function(){
@@ -13,7 +14,7 @@ var SearchResultsRow = React.createClass({
   },
 
   _onChange: function(){
-    console.log('changed');
+    
   },
 
   render: function(){

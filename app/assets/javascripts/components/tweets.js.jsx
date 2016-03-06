@@ -26,7 +26,17 @@ var Tweets = React.createClass({
       <div>
         <h1 className="results-table">Results</h1>
         <table className="table table-striped">
-            <tbody>{rows}</tbody>
+            <thead>
+              <tr>
+                <th></th>
+                <th>Tweet</th>
+                <th>Date</th>
+                <th>Retweets</th>
+              </tr>
+            </thead>
+            <tbody>
+              {rows}
+            </tbody>
         </table>
       </div>
     );

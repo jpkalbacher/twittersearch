@@ -19,11 +19,11 @@ class Api::SearchesController < ApplicationController
 		# 	options.merge(q: search_params)
 		# 	)
 		# Twitter::SearchResults.new(request)
-	end
+	end	
 
 	def tweets(screen_name)
-		tweets = $twitter.user_timeline(screen_name)
-
+		options ={count: 200}
+		tweets = $twitter.user_timeline(screen_name, options)
 		tweets.to_json
 	end
 end

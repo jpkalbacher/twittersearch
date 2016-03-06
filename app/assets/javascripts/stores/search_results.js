@@ -6,6 +6,10 @@
     _found_handles = [foundHandles];
   };
 
+  var emptyFoundHandles = function(){
+    _found_handles = [];
+  }
+
   root.SearchResultsStore = $.extend({}, EventEmitter.prototype, {
     addSearchChangeListener: function(callback){
       this.on(CHANGE_EVENT, callback);
@@ -17,6 +21,11 @@
 
     all: function(){
       return _found_handles;
+    },
+
+    empty: function(){
+      emptyFoundHandles();
+      this.emit(CHANGE_EVENT);
     },
 
     dispatcherId: AppDispatcher.register(function(payload){
