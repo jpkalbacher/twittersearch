@@ -17,6 +17,10 @@ var Tweets = React.createClass({
     TweetStore.sortTweetsByDate();
   },
 
+  togglePhotoFilter: function(){
+    TweetActions.togglePhotos();
+  },
+
   componentWillUnmount: function(){
     TweetStore.removeTweetChangeListener(this._onChange);
   },
@@ -32,12 +36,18 @@ var Tweets = React.createClass({
     });
     return (
       <div>
-        <h1 className="results-table">Results</h1>
+        <input className="checkbox" 
+               id="filter-checkbox" 
+               type="checkbox"
+               onClick={this.togglePhotoFilter}>
+               only include photos
+        </input>
+
         <table className="table table-striped">
             <thead>
               <tr>
                 <th></th>
-                <th>Tweet</th>
+                <th></th>
                 <th onClick={this.sortTweetsByDate}>Date</th>
                 <th onClick={this.sortRetweetsAscending}>Retweets</th>
               </tr>

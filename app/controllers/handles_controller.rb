@@ -25,14 +25,17 @@ class HandlesController < ApplicationController
 		searches = Api::SearchesController.new
 		screen_name = handle_params[:screen_name]
 
-		tweets = JSON.parse(searches.tweets(screen_name))
-		user = JSON.parse(searches.search(screen_name))
+		# tweets = JSON.parse(searches.tweets(screen_name))
+		
+		@user = JSON.parse(searches.search(screen_name))
 
 		#failing on large requests
-		followers = JSON.parse(searches.followers(screen_name))
+		# followers = JSON.parse(searches.followers(screen_name))
 
-		rating = ProfileRating.new(user, tweets, followers)
-		rating.total_score
+		# user_and_tweets = UserProfile.new(user, tweets)
+		# render :user_and_tweets
+		# rating = ProfileRating.new(user, tweets, followers)
+		# rating.total_score
 	end
 
 	private

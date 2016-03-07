@@ -6,12 +6,7 @@ var Results = React.createClass({
   },
 
   componentDidMount: function(){
-
     SearchResultsStore.addSearchChangeListener(this._onChange);
-    $(document).ready(function() { 
-        $("#searchResults").tablesorter(); 
-      } 
-    ); 
   },
 
   componentWillUnmount: function(){

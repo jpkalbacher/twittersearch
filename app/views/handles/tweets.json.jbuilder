@@ -1,6 +1,6 @@
 json.tweets(@tweets) do |tweet|
   json.text tweet['text']	
-
+  json.id tweet['id']
   json.created_at tweet['created_at']
   json.retweets tweet['retweet_count']
 

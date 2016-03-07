@@ -1,3 +1,5 @@
+require 'json'
+
 class Api::SearchesController < ApplicationController
 	def handle(screen_name)
 		user = $twitter.user(screen_name)

@@ -1,6 +1,15 @@
 (function(root){
   var CHANGE_EVENT = "change";
   var _tweets = [];
+  var _filter = 'off';
+
+  var filterPhotos = function(){
+    if (_filter == 'off'){
+      _filter = 'on';
+    } else {
+      _filter = 'off';
+    }
+  };
 
   var resetTweets = function(tweets){
     _tweets = tweets;
@@ -38,13 +47,28 @@
     },
 
     all: function(){
-      return _tweets;
+      var filtered_tweets = [];
+
+      if (_filter == 'off'){
+        filtered_tweets = _tweets;
+      } else {
+        for(var i = 0; i < _tweets.length; i++){
+          if (_tweets[i].photo_entity){
+            filtered_tweets.push(_tweets[i]);
+          }   
+        }
+      }
+      return filtered_tweets;
     },
 
     dispatcherId: AppDispatcher.register(function(payload){
       switch(payload.actionType){
         case TweetConstants.TWEETS_RECEIVED:
           resetTweets(payload.tweets);
+          TweetStore.emit(CHANGE_EVENT);
+          break;
+        case TweetConstants.TOGGLE_PHOTOS:
+          filterPhotos();
           TweetStore.emit(CHANGE_EVENT);
           break;
       }
