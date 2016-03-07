@@ -21,9 +21,12 @@ class Api::SearchesController < ApplicationController
 		# Twitter::SearchResults.new(request)
 	end	
 
+	def followers(screen_name)
+		followers = $twitter.followers(screen_name).to_json
+	end
+
 	def tweets(screen_name)
 		options ={count: 200}
-		tweets = $twitter.user_timeline(screen_name, options)
-		tweets.to_json
+		tweets = $twitter.user_timeline(screen_name, options).to_json
 	end
 end

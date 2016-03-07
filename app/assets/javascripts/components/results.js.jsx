@@ -6,7 +6,12 @@ var Results = React.createClass({
   },
 
   componentDidMount: function(){
+
     SearchResultsStore.addSearchChangeListener(this._onChange);
+    $(document).ready(function() { 
+        $("#searchResults").tablesorter(); 
+      } 
+    ); 
   },
 
   componentWillUnmount: function(){
@@ -24,7 +29,7 @@ var Results = React.createClass({
     });
     return (
       <div>
-        <table className="table table-striped">
+        <table className="table table-striped" id="searchTablew">
             <tbody>{rows}</tbody>
         </table>
       </div>

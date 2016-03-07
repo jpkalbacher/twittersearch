@@ -2,14 +2,14 @@ class HandlesController < ApplicationController
 	def handle
 		searches = Api::SearchesController.new
 
-		## test call ##
 		user = searches.handle(handle_params[:screen_name])
 		render json: user
 	end
 
 	def search
+		### need API call for search fragments
 		searches = Api::SearchesController.new
-		## test call ##
+
 		user = searches.search(handle_params[:screen_name])
 		render json: user
 	end
@@ -19,6 +19,19 @@ class HandlesController < ApplicationController
 
 		tweets = searches.tweets(handle_params[:screen_name])
 		render json: tweets
+	end
+
+	def user_and_tweets
+		searches = Api::SearchesController.new
+		screen_name = handle_params[:screen_name]
+
+		tweets = JSON.parse(searches.tweets(screen_name))
+		user = JSON.parse(searches.search(screen_name))
+		followers = JSON.parse(searches.followers(screen_name))
+
+		rating = ProfileRating.new(user, tweets, followers)
+		debugger
+		rating.score_tweets
 	end
 
 	private

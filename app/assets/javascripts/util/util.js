@@ -16,7 +16,7 @@ var Util = {
 
   fetchProfile: function(screen_name){
     $.ajax({
-      url: '/handle',
+      url: '/user_and_tweets',
       type: 'GET',
       data: {handle: {screen_name: screen_name}},
       dataType: 'json',
