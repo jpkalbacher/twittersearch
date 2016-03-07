@@ -5,9 +5,10 @@ Rails.application.routes.draw do
     get 'handle/' => 'searches#handle'
     get 'search/' => 'searches#search'
     get 'tweets/' => 'searches#tweets'
+    get 'followers/' => 'searches#followers'
   end
 
-  
+  get 'user_and_tweets/' => 'handles#user_and_tweets'
   get 'search/' => 'handles#search'
   get 'handle/' => 'handles#handle'
   get 'tweets/' => 'handles#tweets'

@@ -6,6 +6,18 @@
     _tweets = tweets;
   };
 
+  var sortTweets = function(){
+    _tweets.sort(function(a,b){
+      return b['retweets'] - a['retweets'];
+    });
+  };
+
+  var sortTweetsDate = function(){
+    _tweets.sort(function(a,b){
+      return b['created_at'] - a['created_at'];
+    });
+  };
+
   root.TweetStore = $.extend({}, EventEmitter.prototype, {
     addTweetChangeListener: function(callback){
       this.on(CHANGE_EVENT, callback);
@@ -13,6 +25,16 @@
 
     removeTweetChangeListener: function(callback){
       this.removeListener(CHANGE_EVENT, callback);
+    },
+
+    sortRetweetsAscending: function(){
+      sortTweets();
+      this.emit(CHANGE_EVENT);
+    },
+
+    sortTweetsByDate: function(){
+      sortTweetsDate();
+      this.emit(CHANGE_EVENT);
     },
 
     all: function(){

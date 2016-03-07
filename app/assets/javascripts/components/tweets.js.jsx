@@ -9,6 +9,14 @@ var Tweets = React.createClass({
     TweetStore.addTweetChangeListener(this._onChange);
   },
 
+  sortRetweetsAscending: function(){
+    TweetStore.sortRetweetsAscending();
+  },
+
+  sortTweetsByDate: function(){
+    TweetStore.sortTweetsByDate();
+  },
+
   componentWillUnmount: function(){
     TweetStore.removeTweetChangeListener(this._onChange);
   },
@@ -30,8 +38,8 @@ var Tweets = React.createClass({
               <tr>
                 <th></th>
                 <th>Tweet</th>
-                <th>Date</th>
-                <th>Retweets</th>
+                <th onClick={this.sortTweetsByDate}>Date</th>
+                <th onClick={this.sortRetweetsAscending}>Retweets</th>
               </tr>
             </thead>
             <tbody>
