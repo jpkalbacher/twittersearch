@@ -8,7 +8,6 @@ class Api::SearchesController < ApplicationController
 
 	def search(search_params, options={})
 		user = $twitter.user(search_params)
-
 		user.to_json
 
 		## CHANGE TO SEARCH FOR FRAGMENTS

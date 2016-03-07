@@ -2,6 +2,8 @@
   var CHANGE_EVENT = "change";
   var _tweets = [];
   var _filter = 'off';
+  var _date_sort = 'off'
+  var _retweets_sort = 'off'
 
   var filterPhotos = function(){
     if (_filter == 'off'){
@@ -12,6 +14,7 @@
   };
 
   var resetTweets = function(tweets){
+    debugger;
     _tweets = tweets;
   };
 
@@ -23,7 +26,7 @@
 
   var sortTweetsDate = function(){
     _tweets.sort(function(a,b){
-      return b['created_at'] - a['created_at'];
+      return new Date(b['created_at']) - new Date(a['created_at']);
     });
   };
 
