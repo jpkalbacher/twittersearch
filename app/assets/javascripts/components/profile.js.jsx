@@ -21,9 +21,11 @@ var Profile = React.createClass({
     return (
       <div>
         <h1>Profile</h1>
-      	<h4>{this.state.profile.screen_name}</h4>
+        <img src={this.state.profile.profile_image_url}/>
+      	<h4>@{this.state.profile.screen_name}</h4>
         <h4>{this.state.profile.name}</h4>
-        <h4>{this.state.profile.followers_count}</h4>
+        <h4>followers: {this.state.profile.followers_count}</h4>
+        <h4>following: {this.state.profile.following_count}</h4>
       </div>
     )
   }

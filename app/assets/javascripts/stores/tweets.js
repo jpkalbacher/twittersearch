@@ -17,15 +17,27 @@
     _tweets = tweets;
   };
 
-  var sortTweets = function(){
+  var sortTweetsRetweetsDesc = function(){
     _tweets.sort(function(a,b){
       return b['retweets'] - a['retweets'];
     });
   };
 
-  var sortTweetsDate = function(){
+  var sortTweetsRetweetsAsc = function(){
+    _tweets.sort(function(a,b){
+      return a['retweets'] - b['retweets'];
+    });
+  };
+
+  var sortTweetsDateDesc = function(){
     _tweets.sort(function(a,b){
       return new Date(b['created_at']) - new Date(a['created_at']);
+    });
+  };
+
+  var sortTweetsDateAsc = function(){
+    _tweets.sort(function(a,b){
+      return new Date(a['created_at']) - new Date(b['created_at']);
     });
   };
 
@@ -38,13 +50,27 @@
       this.removeListener(CHANGE_EVENT, callback);
     },
 
-    sortRetweetsAscending: function(){
-      sortTweets();
+    sortTweetsByRetweets: function(){
+      _date_sort = 'off';
+      if (_retweets_sort == 'off' || _retweets_sort == 'asc') {
+        _retweets_sort = 'desc';
+        sortTweetsRetweetsDesc();
+      } else {
+        _retweets_sort = 'asc';
+        sortTweetsRetweetsAsc();
+      }
       this.emit(CHANGE_EVENT);
     },
 
     sortTweetsByDate: function(){
-      sortTweetsDate();
+      _retweets_sort = 'off';
+      if (_date_sort == 'off' || _date_sort == 'asc') {
+        _date_sort = 'desc';
+        sortTweetsDateDesc();
+      } else {
+        _date_sort = 'asc';
+        sortTweetsDateAsc();
+      }
       this.emit(CHANGE_EVENT);
     },
 
