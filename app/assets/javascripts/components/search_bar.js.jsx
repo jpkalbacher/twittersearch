@@ -10,7 +10,8 @@ var SearchBar = React.createClass({
   handleSubmit: function(e){
     e.preventDefault();
     var searchParams = this.state.searchParams;
-    Util.searchForHandle(this.state.searchParams)
+    Util.fetchProfile(this.state.searchParams)
+    Util.fetchTweets(this.state.searchParams)
     this.setState({searchParams: ""});
   },
 

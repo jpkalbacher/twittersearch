@@ -1,7 +1,7 @@
 var Util = {
   searchForHandle: function(search_params){
     $.ajax({
-      url: '/search',
+      url: '/handle',
       type: 'GET',
       data: {handle: {screen_name: search_params}},
       dataType: 'json',

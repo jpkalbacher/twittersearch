@@ -14,7 +14,6 @@
   };
 
   var resetTweets = function(tweets){
-    debugger;
     _tweets = tweets;
   };
 
