@@ -1,21 +1,23 @@
 require 'json'
 
 class Api::SearchesController < ApplicationController
+	helper ScoringHelper
+
 	def show
-		@user = $twitter.user(search_params[:screen_name])
+		get_profile_data
 		render :show
 	end
 
-	def search(search_params, options={})
-		# not available in application only authentication
-	end	
+	def get_profile_data
+		@user = $twitter.user(search_params[:screen_name])
+	end
 
 	def followers
-		followers = $twitter.followers(search_params[:screen_name]).to_json
+		followers = $twitter.followers(search_params[:screen_name])
 	end
 
 	def tweets
-		options ={count: 200}
+		options = { count: 200 }
 		@tweets = $twitter.user_timeline(search_params[:screen_name], options)
 		render :tweets
 	end

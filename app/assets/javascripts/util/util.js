@@ -29,6 +29,21 @@ var Util = {
     }); 
   },
 
+  fetchRating: function(screen_name){
+    $.ajax({
+      url: 'score',
+      type: 'GET',
+      data: {searches: {screen_name: screen_name}},
+      dataType: 'json',
+      success: function(result) {
+        console.log('got profile score');
+      },
+      error: function(error) {
+        console.log(error);
+      }
+    }); 
+  },
+
   fetchTweets: function(screen_name){
     $.ajax({
       url: 'api/tweets',
@@ -36,7 +51,6 @@ var Util = {
       data: {searches: {screen_name: screen_name}},
       dataType: 'json',
       success: function(tweets) {
-        debugger;
         TweetActions.receiveTweets(tweets);
       },
       error: function(error) {

@@ -1,10 +1,24 @@
 require 'set'
 
 class ProfileRating
-	def initialize(user = {}, tweets = [], followers = [])
-		@tweets = tweets
-		@followers = followers
-		@user = user
+	def initialize(screen_name)
+		@user = get_user(screen_name)
+		@tweets = get_tweets(screen_name)
+		@followers = get_followers(screen_name)
+	end
+
+	def get_followers(screen_name)
+		options = { count: 10 }
+		$twitter.followers(screen_name, options.merge(options))
+	end
+
+	def get_tweets(screen_name)
+		options = { count: 200 }
+		$twitter.user_timeline(screen_name, options)
+	end
+
+	def get_user(screen_name)
+		$twitter.user(screen_name)
 	end
 
 	def total_score
@@ -16,7 +30,7 @@ class ProfileRating
 		words = []
 
 		@tweets.each do |tweet|
-			words.concat(tweet['text'].split(' '))
+			words.concat(tweet.text.split(' '))
 		end
 
 		words.each do |word|
@@ -27,7 +41,7 @@ class ProfileRating
 	end
 
 	def followers_scores
-		followers_count = @user['followers_count']
+		followers_count = @user.followers_count
 		followers_scores_sum = 0
 
 		@followers.each do |follower|
@@ -38,7 +52,7 @@ class ProfileRating
 	end
 
 	def followers_score(user)
-		followers = user['followers_count']
+		followers = user.followers_count
 
 		if followers > 1000000
 			1
@@ -64,7 +78,7 @@ class ProfileRating
 			0
 		end
 	end
-
+	
 	POSITIVE_WORDS = [
 		'a+',
 		'abound',
