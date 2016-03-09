@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'static_pages#root'
 
-  get 'score/' => 'scores#score'
+  get 'profile_rating/' => 'profile_ratings#profile_rating'
 
   namespace :api, defaults: {format: :json} do
     get 'show/' => 'searches#show'

@@ -33,6 +33,7 @@ var Profile = React.createClass({
     return (
       <div>
         {profile}
+        <ProfileRating />
       </div>
     )
   }

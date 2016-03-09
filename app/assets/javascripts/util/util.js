@@ -31,11 +31,12 @@ var Util = {
 
   fetchRating: function(screen_name){
     $.ajax({
-      url: 'score',
+      url: 'profile_rating',
       type: 'GET',
       data: {searches: {screen_name: screen_name}},
       dataType: 'json',
       success: function(result) {
+        ProfileActions.receiveRating(result);
         console.log('got profile score');
       },
       error: function(error) {

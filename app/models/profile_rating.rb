@@ -8,8 +8,9 @@ class ProfileRating
 	end
 
 	def get_followers(screen_name)
-		options = { count: 10 }
-		$twitter.followers(screen_name, options.merge(options))
+		options = { count: 3 }
+		# $twitter.followers(screen_name, options.merge(options))
+		return []
 	end
 
 	def get_tweets(screen_name)
