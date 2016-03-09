@@ -1,9 +1,9 @@
 var Util = {
   searchForHandle: function(search_params){
     $.ajax({
-      url: '/handle',
+      url: 'api/handle',
       type: 'GET',
-      data: {handle: {screen_name: search_params}},
+      data: {searches: {screen_name: search_params}},
       dataType: 'json',
       success: function(results) {
         SearchActions.receiveSearchResults(results);
@@ -16,9 +16,9 @@ var Util = {
 
   fetchProfile: function(screen_name){
     $.ajax({
-      url: '/user_and_tweets',
+      url: 'api/show',
       type: 'GET',
-      data: {handle: {screen_name: screen_name}},
+      data: {searches: {screen_name: screen_name}},
       dataType: 'json',
       success: function(result) {
         ProfileActions.receiveProfile(result);
@@ -31,11 +31,12 @@ var Util = {
 
   fetchTweets: function(screen_name){
     $.ajax({
-      url: '/tweets',
+      url: 'api/tweets',
       type: 'GET',
-      data: {handle: {screen_name: screen_name}},
+      data: {searches: {screen_name: screen_name}},
       dataType: 'json',
       success: function(tweets) {
+        debugger;
         TweetActions.receiveTweets(tweets);
       },
       error: function(error) {

@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root 'static_pages#root'
 
   namespace :api, defaults: {format: :json} do
-    get 'handle/' => 'searches#handle'
+    get 'show/' => 'searches#show'
     get 'search/' => 'searches#search'
     get 'tweets/' => 'searches#tweets'
     get 'followers/' => 'searches#followers'

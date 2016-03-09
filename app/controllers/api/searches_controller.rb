@@ -1,21 +1,27 @@
 require 'json'
 
 class Api::SearchesController < ApplicationController
-	def handle(screen_name)
-		user = $twitter.user(screen_name)
-		user.to_json
+	def show
+		@user = $twitter.user(search_params[:screen_name])
+		render :show
 	end
 
 	def search(search_params, options={})
 		# not available in application only authentication
 	end	
 
-	def followers(screen_name)
-		followers = $twitter.followers(screen_name).to_json
+	def followers
+		followers = $twitter.followers(search_params[:screen_name]).to_json
 	end
 
-	def tweets(screen_name)
+	def tweets
 		options ={count: 200}
-		tweets = $twitter.user_timeline(screen_name, options).to_json
+		@tweets = $twitter.user_timeline(search_params[:screen_name], options)
+		render :tweets
+	end
+
+	private
+	def search_params
+		params.require(:searches).permit(:screen_name)
 	end
 end

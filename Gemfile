@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'httparty'
+# use for twitter auth and basic api calls
 gem 'twitter'
 # Use Figaro for twitter api keys
 gem 'figaro'
@@ -47,6 +49,7 @@ group :development, :test do
   gem 'byebug'
 
   gem 'rspec-rails'
+
 
   gem 'binding_of_caller'
 

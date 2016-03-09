@@ -81,7 +81,7 @@
         filtered_tweets = _tweets;
       } else {
         for(var i = 0; i < _tweets.length; i++){
-          if (_tweets[i].photo_entity){
+          if (_tweets[i].media_url){
             filtered_tweets.push(_tweets[i]);
           }   
         }
