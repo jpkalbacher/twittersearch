@@ -18,7 +18,7 @@ var Profile = React.createClass({
   },
 
   render: function(){
-    if (this.state.profile) {
+    if (this.state.profile.screen_name) {
       var profile = (<div>
         <h1>Profile</h1>
 

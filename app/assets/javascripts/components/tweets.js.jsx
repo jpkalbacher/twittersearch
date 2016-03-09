@@ -34,14 +34,15 @@ var Tweets = React.createClass({
     this.state.tweets.forEach(function(tweet){
       rows.push(<Tweet tweet={tweet} key={tweet.id} />);
     });
-    return (
-      <div>
-        <input className="checkbox" 
-               id="filter-checkbox" 
+
+    if (this.state.tweets[0]) {
+      var feed = (<div>
+        <input id="filter-checkbox" 
                type="checkbox"
-               onClick={this.togglePhotoFilter}>
-               only include photos
-        </input>
+               value=""
+               onClick={this.togglePhotoFilter}
+               label="only include photos"/>
+        
 
         <table className="table table-striped">
             <thead>
@@ -56,6 +57,13 @@ var Tweets = React.createClass({
               {rows}
             </tbody>
         </table>
+      </div>);
+    } else {
+      feed = ''
+    }
+    return (
+      <div>
+        {feed}
       </div>
     );
   }

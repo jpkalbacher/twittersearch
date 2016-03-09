@@ -2,8 +2,8 @@
   var CHANGE_EVENT = "change";
   var _tweets = [];
   var _filter = 'off';
-  var _date_sort = 'off'
-  var _retweets_sort = 'off'
+  var _date_sort = 'off';
+  var _retweets_sort = 'off';
 
   var filterPhotos = function(){
     if (_filter == 'off'){
@@ -42,6 +42,8 @@
   };
 
   root.TweetStore = $.extend({}, EventEmitter.prototype, {
+    defaultMaxListeners: Infinity,
+
     addTweetChangeListener: function(callback){
       this.on(CHANGE_EVENT, callback);
     },
@@ -102,4 +104,5 @@
       }
     })
   });
+
 })(this);

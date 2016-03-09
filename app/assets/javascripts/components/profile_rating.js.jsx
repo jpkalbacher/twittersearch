@@ -18,10 +18,18 @@ var ProfileRating = React.createClass({
   },
 
   render: function(){
+    if (this.state.rating) {
+      var rating = (
+        <div>
+          <h4>profile rating: {this.state.rating}</h4>
+        </div>
+      )
+    } else {
+      rating = ''
+    };
+
     return (
-      <div>
-        <h1>rating: {this.state.rating}</h1>
-      </div>
+      <div>{rating}</div>
     )
   }
 });
