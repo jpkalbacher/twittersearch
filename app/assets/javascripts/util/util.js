@@ -16,7 +16,7 @@ var Util = {
 
   fetchProfile: function(screen_name){
     $.ajax({
-      url: 'api/2',
+      url: 'api/show',
       type: 'GET',
       data: {searches: {screen_name: screen_name}},
       dataType: 'json',
