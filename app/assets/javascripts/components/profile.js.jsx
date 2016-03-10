@@ -27,8 +27,13 @@ var Profile = React.createClass({
           <div className="profile-stats">
             <p><span id="display-name">{this.state.profile.name}</span></p>
             <p><span id="display-handle">@{this.state.profile.screen_name}</span></p>
+          </div>
+          <div className="profile-stats">
             <p><span className="label-text">FOLLOWERS: </span>{this.state.profile.followers_count}</p>
-            <p><span className="label-text">FOLLOWING: </span>{this.state.profile.following_count}</p>
+            <p><span className="label-text">FOLLOWING: </span>{this.state.profile.following_count}</p>            
+          </div>
+          <div className="profile-stats">
+            <p><span className="label-text">JOINED ON: </span>{new Date(this.state.profile.created_at).toISOString().split('T')[0]}</p>                        
             <ProfileRating />
           </div>
         </div>);

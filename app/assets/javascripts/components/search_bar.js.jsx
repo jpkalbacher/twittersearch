@@ -19,7 +19,6 @@ var SearchBar = React.createClass({
   render: function(){
     return (
       <div>
-        <h1>Search</h1>
         <form className="search-form clear-fix" onSubmit={this.handleSubmit}>
             <img className="logo" src="http://seoulspace.co.kr/wp-content/uploads/2011/11/twitter-logo.png"/>
             <input type="text"

@@ -1,3 +1,0 @@
-module ScoringHelper
-
-end

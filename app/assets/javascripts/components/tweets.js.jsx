@@ -45,7 +45,7 @@ var Tweets = React.createClass({
                 <th onClick={this.sortTweetsByDate}>Date</th>
                 <th onClick={this.sortTweetsByRetweets}>Retweets</th>
                 <th><div className="photo-filter">
-                      <label>photos only </label>
+                      <label>with photos only </label><span> </span>
                       <input id="filter-checkbox" 
                              type="checkbox"
                              value=""
