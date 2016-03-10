@@ -22,7 +22,7 @@ class ProfileRating
 	def get_tweets(screen_name)
 		options = { count: 200 }
 		begin
-			Rails.cache.fetch("#{screen_name}_tweets")
+			Rails.cache.read("#{screen_name}_tweets")
 		rescue
 			puts "failure to access cache for #{screen_name}"
 		end
@@ -30,7 +30,7 @@ class ProfileRating
 
 	def get_user(screen_name)
 		begin
-			Rails.cache.fetch("#{screen_name}_profile")
+			Rails.cache.read("#{screen_name}_profile")
 		rescue
 			puts "failure to access cache for #{screen_name}"
 		end
