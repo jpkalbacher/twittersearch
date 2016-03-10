@@ -15,8 +15,7 @@ require "rails/test_unit/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-Rails.config.cache_store= :memory_store, { size: 64.megabytes }
-
+ApplicationController::Base.cache_store= :memory_store, { size: 64.megabytes }
 
 module Twittersearch
   class Application < Rails::Application
