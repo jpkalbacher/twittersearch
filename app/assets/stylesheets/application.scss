@@ -18,7 +18,7 @@
 
 .app {
 	background-color: #E5F2F7;
-	max-width: 600px;
+	max-width: 800px;
 }
 
 .main-page {
@@ -52,17 +52,42 @@
 	border-radius: 21px;
 }
 
+.label-text {
+	color: #8899A8;
+  font-size: 10px;
+  letter-spacing: .02em;
+  text-transform: uppercas
+}
+
 .clearfix:after {
   clear: both;
   display: block;
   content: "";
 }
 
-.profile-container {
+.profile-stats {
 	background-color: #fff;
-	padding: 9px 12px;
-	border-radius: 4px;
+	padding: 9px 16px;
+	float: left;
+	display: block;
+  font-size: 18px;
+  font-weight: 500;
+  padding-top: 3px;
+  color: #0084B4 !important;
+}
 
+.profile-picture {
+	border-radius: 7px;
+	display: inline-block;
+	float: left;
+}
+
+.profile {
+	border-radius: 4px;
+	height: auto;
+	background-color: #fff;
+	padding-top: 3px;
+	padding: 9px 12px;
 }
 
 .search-btn {
@@ -77,5 +102,32 @@
 }
 
 .tweets {
-	padding: 25px;
+	padding-bottom: 25px;
+	padding-top: 25px;
+}
+
+.tweet-date {
+	min-width: 100px;
+}
+
+.profile-img {
+	border-radius: 7px;
+}
+
+#display-name {
+	color: #292f33;
+	font-size: 18px;
+}
+
+#display-handle {
+	color: grey;
+	font-size: 14px;
+}
+
+.photo-filter {
+	float: right;
+}
+
+.tweet-image {
+	max-width: 250px;
 }

@@ -21,7 +21,7 @@ var ProfileRating = React.createClass({
     if (this.state.rating) {
       var rating = (
         <div>
-          <h4>profile rating: {this.state.rating}</h4>
+          <p><span className="label-text">PROFILE RATING: </span> {this.state.rating}</p>
         </div>
       )
     } else {

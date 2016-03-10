@@ -37,11 +37,7 @@ var Tweets = React.createClass({
 
     if (this.state.tweets[0]) {
       var feed = (<div className="tweets">
-        <input id="filter-checkbox" 
-               type="checkbox"
-               value=""
-               onClick={this.togglePhotoFilter}
-               label="only include photos"/>
+        
         
 
         <table className="table tweet-table">
@@ -51,6 +47,14 @@ var Tweets = React.createClass({
                 <th></th>
                 <th onClick={this.sortTweetsByDate}>Date</th>
                 <th onClick={this.sortTweetsByRetweets}>Retweets</th>
+                <th><div className="photo-filter">
+                      <label>photos only </label>
+                      <input id="filter-checkbox" 
+                             type="checkbox"
+                             value=""
+                             onClick={this.togglePhotoFilter}/>
+                    </div>
+                </th>
               </tr>
             </thead>
             <tbody>
