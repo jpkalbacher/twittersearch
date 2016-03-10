@@ -1,5 +1,4 @@
 require 'set'
-require 'Dictionaries'
 
 class ProfileRating
 	def initialize(screen_name)
