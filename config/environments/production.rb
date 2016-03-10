@@ -11,7 +11,7 @@ Rails.application.configure do
   config.eager_load = true
 
 
-  config.autoload_paths += Dir["#{config.root}/lib/**/"]
+  config.autoload_paths += Dir["#{config.root}/lib"]
 
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local       = false
