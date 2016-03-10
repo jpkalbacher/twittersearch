@@ -1,8 +1,6 @@
 require 'json'
 
 class Api::SearchesController < ApplicationController
-	helper ScoringHelper
-
 	def show
 		get_profile_data
 		render :show

@@ -9,6 +9,7 @@
 </head>
 <body>
 
+<%= flash[:errors].join(", ") if flash[:errors] %>
 <%= yield %>	
 
 </body>

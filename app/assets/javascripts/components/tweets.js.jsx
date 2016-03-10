@@ -37,9 +37,6 @@ var Tweets = React.createClass({
 
     if (this.state.tweets[0]) {
       var feed = (<div className="tweets">
-        
-        
-
         <table className="table tweet-table">
             <thead>
               <tr>

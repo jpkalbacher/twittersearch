@@ -47,6 +47,7 @@
 
 .search-bar {
 	height: 33px;
+	min-width: 350px;
 	padding: 5px 27px 6px 12px;
 	border: 1px solid #e1e8ed;
 	border-radius: 21px;
@@ -131,4 +132,8 @@
 .tweet-image {
 	max-width: 250px;
 	border-radius: 7px;
+}
+
+.logo {
+	max-width: 50px;
 }
