@@ -10,26 +10,27 @@ class ProfileRating
 	def get_followers(screen_name)
 		options = { count: 3 }
 		begin 
-			$twitter.followers(screen_name, options.merge(options))
+			@followers = $twitter.followers(screen_name, options)
 		rescue
-			[]
+			puts "rate limit hit"
+			return []
 		end
-	end
+	end	
 
 	def get_tweets(screen_name)
 		options = { count: 200 }
 		begin
-			$twitter.user_timeline(screen_name, options)
+			Rails.cache.read("#{screen_name}_tweets")
 		rescue
-			print 'rate limit exceeded'
+			puts "failure to access cache for #{screen_name}"
 		end
 	end
 
 	def get_user(screen_name)
 		begin
-			$twitter.user(screen_name)
+			Rails.cache.read("#{screen_name}_profile")
 		rescue
-			print 'rate limit exceeded'
+			puts "failure to access cache for #{screen_name}"
 		end
 	end
 
@@ -54,6 +55,8 @@ class ProfileRating
 
 	def followers_scores
 		followers_count = @user.followers_count
+		return 0 if @user.followers_count == 0
+
 		followers_scores_sum = 0
 
 		@followers.each do |follower|
