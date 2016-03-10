@@ -10,16 +10,28 @@ class ProfileRating
 
 	def get_followers(screen_name)
 		options = { count: 3 }
-		$twitter.followers(screen_name, options.merge(options))
+		begin 
+			$twitter.followers(screen_name, options.merge(options))
+		rescue
+			[]
+		end
 	end
 
 	def get_tweets(screen_name)
 		options = { count: 200 }
-		$twitter.user_timeline(screen_name, options)
+		begin
+			$twitter.user_timeline(screen_name, options)
+		rescue
+			print 'rate limit exceeded'
+		end
 	end
 
 	def get_user(screen_name)
-		$twitter.user(screen_name)
+		begin
+			$twitter.user(screen_name)
+		rescue
+			print 'rate limit exceeded'
+		end
 	end
 
 	def total_score
