@@ -1,6 +1,9 @@
 require 'set'
+require 'Dictionaries'
 
 class ProfileRating
+	include Dictionaries
+
 	def initialize(screen_name)
 		@user = get_user(screen_name)
 		@tweets = get_tweets(screen_name)
@@ -47,8 +50,8 @@ class ProfileRating
 		end
 
 		words.each do |word|
-			score += 1 if Dictionaries::POSITIVE_WORDS.include?(word)
-			score -= 1 if Dictionaries::NEGATIVE_WORDS.include?(word)
+			score += 1 if POSITIVE_WORDS.include?(word)
+			score -= 1 if NEGATIVE_WORDS.include?(word)
 		end
 		score
 	end
