@@ -1,5 +1,4 @@
 require 'set'
-require 'Dictionaries'
 
 class ProfileRating
 	include Dictionaries
