@@ -1,4 +1,4 @@
-var Handle = React.createClass({
+var TwitterUser = React.createClass({
   getInitialState: function(){
     return {search_fragment: ""};
   },

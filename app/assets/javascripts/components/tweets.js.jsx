@@ -36,7 +36,7 @@ var Tweets = React.createClass({
     });
 
     if (this.state.tweets[0]) {
-      var feed = (<div>
+      var feed = (<div className="tweets">
         <input id="filter-checkbox" 
                type="checkbox"
                value=""
@@ -44,7 +44,7 @@ var Tweets = React.createClass({
                label="only include photos"/>
         
 
-        <table className="table table-striped">
+        <table className="table tweet-table">
             <thead>
               <tr>
                 <th></th>
@@ -62,7 +62,7 @@ var Tweets = React.createClass({
       feed = ''
     }
     return (
-      <div>
+      <div className="tweets">
         {feed}
       </div>
     );

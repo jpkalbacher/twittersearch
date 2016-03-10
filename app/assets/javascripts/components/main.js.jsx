@@ -3,7 +3,7 @@ var Main = React.createClass({
     return (
       <div className="main-page">
         < Search />
-        < Handle />
+        < TwitterUser />
       </div>
     )
   }

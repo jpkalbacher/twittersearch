@@ -16,12 +16,36 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+.app {
+	background-color: #E5F2F7;
+	max-width: 600px;
+}
+
 .main-page {
-	padding-top: 100px;
+	padding-top: 75px;
+	background-color: #E5F2F7;
+	min-height: 100%;
+}
+
+#content {
+	background-color: #E5F2F7;
+	min-height: 100vh;
+	width: 100%;
+}
+
+.tweet-container {
+	font-size: 14px;
+	padding: 9px 12px;
+	min-height: 51px;
+	border-bottom: 1px solid #e1e8ed;
+	background-color: #fff;
+}
+
+.tweet-container:hover {
+	background-color: #f5f8fa;
 }
 
 .search-bar {
-	width: 25%;
 	height: 33px;
 	padding: 5px 27px 6px 12px;
 	border: 1px solid #e1e8ed;
@@ -34,8 +58,15 @@
   content: "";
 }
 
-.search-btn {
+.profile-container {
 	background-color: #fff;
+	padding: 9px 12px;
+	border-radius: 4px;
+
+}
+
+.search-btn {
+	background-color: #E5F2F7;
 }
 
 .filter-checkbox {
@@ -43,4 +74,8 @@
 }
 .checkbox {
 	float: right;
+}
+
+.tweets {
+	padding: 25px;
 }
