@@ -13,6 +13,10 @@
     }
   };
 
+  var clearTweets = function(){
+    _tweets = [];
+  };
+
   var resetTweets = function(tweets){
     _tweets = tweets;
   };
@@ -62,6 +66,10 @@
         sortTweetsRetweetsAsc();
       }
       this.emit(CHANGE_EVENT);
+    },
+
+    clearTweets: function(){
+      clearTweets();
     },
 
     sortTweetsByDate: function(){

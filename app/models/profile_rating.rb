@@ -3,10 +3,10 @@ require 'set'
 class ProfileRating
 	include Dictionaries
 
-	def initialize(screen_name)
-		@user = get_user(screen_name)
-		@tweets = get_tweets(screen_name)
-		@followers = get_followers(screen_name)
+	def initialize(screen_name, user = nil, followers = nil, tweets = nil)
+		@user = user || get_user(screen_name)
+		@tweets = tweets || get_tweets(screen_name)
+		@followers = followers || get_followers(screen_name)
 	end
 
 	def get_followers(screen_name)
@@ -37,12 +37,13 @@ class ProfileRating
 	end
 
 	def total_score
-		(followers_score(@user) + (followers_scores * 0.25) + (0.15 * content_score))
+		(followers_score(@user) + (followers_scores * 0.25) + (0.15 * content_score)).round
 	end
 
 	def content_score
 		score = 0
 		words = []
+		return 0 if @tweets.count == 0
 
 		@tweets.each do |tweet|
 			words.concat(tweet.text.split(' '))
@@ -52,12 +53,12 @@ class ProfileRating
 			score += 1 if POSITIVE_WORDS.include?(word)
 			score -= 1 if NEGATIVE_WORDS.include?(word)
 		end
-		score
+		score.to_f / @tweets.count
 	end
 
 	def followers_scores
 		followers_count = @user.followers_count
-		return 0 if @user.followers_count == 0
+		return 0 if @followers.count == 0
 
 		followers_scores_sum = 0
 
@@ -65,7 +66,8 @@ class ProfileRating
 			followers_scores_sum += followers_score(follower)
 		end
 
-		followers_scores_sum / followers_count
+		#average score of each follower in the @followers array
+		followers_scores_sum / @followers.count
 	end
 
 	def followers_score(user)

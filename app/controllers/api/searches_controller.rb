@@ -13,7 +13,7 @@ class Api::SearchesController < ApplicationController
 	end
 
 	def followers
-		@followers ||= $twitter.followers(search_params[:screen_name])
+		@followers = $twitter.followers(search_params[:screen_name])
 	end
 
 	def tweets

@@ -10,6 +10,9 @@ var SearchBar = React.createClass({
   handleSubmit: function(e){
     e.preventDefault();
     var searchParams = this.state.searchParams;
+    ProfileStore.clearProfile();
+    ProfileStore.clearRating();
+    TweetStore.clearTweets();
     Util.fetchProfile(this.state.searchParams);
     Util.fetchTweets(this.state.searchParams);
     Util.fetchRating(this.state.searchParams);

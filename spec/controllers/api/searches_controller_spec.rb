@@ -2,11 +2,6 @@ require 'rails_helper'
 
 RSpec.describe Api::SearchesController, :type => :controller do	
 	describe 'GET show' do
-		## sudo code
-		before test
-			create "response"
-		end
-
 		it "renders show template" do
 			get :show, { searches: {screen_name: 'jpkalbacher'}, format: :json }
     	expect(response).to render_template("api/searches/show")
@@ -14,6 +9,13 @@ RSpec.describe Api::SearchesController, :type => :controller do
 
 		it "returns 200 status code" do
 			get :show, { searches: {screen_name: 'jpkalbacher'}, format: :json }
+			expect(response.status).to eq(200)
+		end
+	end
+
+	describe 'GET tweets' do
+		it "gets tweets" do
+			get :tweets, { searches: {screen_name: 'jpkalbacher'}, format: :json }
 			expect(response.status).to eq(200)
 		end
 	end

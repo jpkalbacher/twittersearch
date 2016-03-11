@@ -11,7 +11,23 @@
     _rating = rating.rating;
   };
 
+  var clearRating = function(){
+    _rating = null;
+  };
+
+  var clearProfile = function(){
+    _profile = {};
+  };
+
   root.ProfileStore = $.extend({}, EventEmitter.prototype, {
+    clearProfile: function() {
+      clearProfile();
+    },
+
+    clearRating: function() {
+      clearRating();
+    },
+
     addProfileChangeListener: function(callback){
       this.on(CHANGE_EVENT, callback);
     },
